@@ -1,0 +1,28 @@
+query CartValidationsGenerateRunInput {
+  buyerJourney {
+    step
+  }
+  cart {
+    buyerIdentity {
+      email
+      phone
+    }
+    lines {
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          requiresShipping
+        }
+        ... on CustomProduct {
+          requiresShipping
+        }
+      }
+    }
+    deliveryGroups {
+      deliveryAddress {
+        address1
+        phone
+      }
+    }
+  }
+}

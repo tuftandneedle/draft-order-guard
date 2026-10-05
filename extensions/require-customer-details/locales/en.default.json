@@ -1,0 +1,4 @@
+{
+  "name": "Require customer details",
+  "description": "Blocks an order, including a draft order, that has no customer email or phone, or no shipping address."
+}

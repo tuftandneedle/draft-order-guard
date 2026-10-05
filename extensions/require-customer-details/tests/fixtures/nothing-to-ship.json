@@ -1,0 +1,35 @@
+{
+  "payload": {
+    "export": "cart-validations-generate-run",
+    "target": "cart.validations.generate.run",
+    "input": {
+      "buyerJourney": {
+        "step": "CHECKOUT_COMPLETION"
+      },
+      "cart": {
+        "buyerIdentity": {
+          "email": "jane@example.com",
+          "phone": "+15555550100"
+        },
+        "lines": [
+          {
+            "merchandise": {
+              "__typename": "CustomProduct",
+              "requiresShipping": false
+            }
+          }
+        ],
+        "deliveryGroups": []
+      }
+    },
+    "output": {
+      "operations": [
+        {
+          "validationAdd": {
+            "errors": []
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "draft-order-guard",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "deploy": "shopify app deploy",
+    "test": "vitest run"
+  },
+  "workspaces": [
+    "extensions/*"
+  ]
+}
