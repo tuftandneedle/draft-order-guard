@@ -9,7 +9,11 @@
       "cart": {
         "buyerIdentity": {
           "email": "jane@example.com",
-          "phone": null
+          "phone": null,
+          "isAuthenticated": false,
+          "customer": {
+            "id": "gid://shopify/Customer/1"
+          }
         },
         "lines": [
           {
@@ -24,6 +28,9 @@
             "deliveryAddress": {
               "address1": "1 Main St",
               "phone": "+15555550100"
+            },
+            "selectedDeliveryOption": {
+              "deliveryMethodType": "SHIPPING"
             }
           }
         ]

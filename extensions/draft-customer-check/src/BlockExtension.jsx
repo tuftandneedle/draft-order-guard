@@ -12,7 +12,7 @@ const QUERY = `query DraftCustomerCheck($id: ID!) {
     email
     phone
     shippingAddress { address1 phone }
-    lineItems(first: 250) { nodes { requiresShipping } }
+    lineItems(first: 50) { nodes { requiresShipping } }
   }
 }`;
 
@@ -21,7 +21,6 @@ function Extension() {
   const [missing, setMissing] = useState(null);
 
   async function check() {
-    setMissing(null);
     try {
       const res = await fetch("shopify:admin/api/graphql.json", {
         method: "POST",
@@ -35,12 +34,13 @@ function Extension() {
     }
   }
 
+  // Shopify doesn't tell a block when the draft changes, so re-check the saved draft every few seconds.
+  // Polling: one small query per open draft every 5 s. Switch to a change event if Shopify adds one.
   useEffect(() => {
     check();
+    const timer = setInterval(check, 5000);
+    return () => clearInterval(timer);
   }, []);
-
-  // The block cannot see edits made on the page, so staff re-run the check after adding details.
-  const checkAgain = <s-button slot="secondary-actions" onClick={check}>Check again</s-button>;
 
   let banner;
   if (missing === null) {
@@ -49,7 +49,6 @@ function Extension() {
     banner = (
       <s-banner tone="warning" heading="Could not check customer details">
         Check the customer, phone and shipping address by hand.
-        {checkAgain}
       </s-banner>
     );
   } else if (missing.length) {
@@ -60,15 +59,13 @@ function Extension() {
             <s-list-item key={item}>Missing {item}</s-list-item>
           ))}
         </s-unordered-list>
-        Add the missing details to this draft, then click Check again.
-        {checkAgain}
+        Add the missing details and save the draft. This box updates within a few seconds.
       </s-banner>
     );
   } else {
     banner = (
       <s-banner tone="success" heading="Customer details complete">
         Email, phone and shipping address are on this draft.
-        {checkAgain}
       </s-banner>
     );
   }

@@ -6,6 +6,10 @@ query CartValidationsGenerateRunInput {
     buyerIdentity {
       email
       phone
+      isAuthenticated
+      customer {
+        id
+      }
     }
     lines {
       merchandise {
@@ -15,6 +19,7 @@ query CartValidationsGenerateRunInput {
         }
         ... on CustomProduct {
           requiresShipping
+          title
         }
       }
     }
@@ -22,6 +27,9 @@ query CartValidationsGenerateRunInput {
       deliveryAddress {
         address1
         phone
+      }
+      selectedDeliveryOption {
+        deliveryMethodType
       }
     }
   }

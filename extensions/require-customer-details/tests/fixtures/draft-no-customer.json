@@ -4,7 +4,7 @@
     "target": "cart.validations.generate.run",
     "input": {
       "buyerJourney": {
-        "step": "CHECKOUT_COMPLETION"
+        "step": null
       },
       "cart": {
         "buyerIdentity": null,

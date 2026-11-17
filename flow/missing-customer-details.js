@@ -1,4 +1,4 @@
-// Shopify Flow "Run code" step for the "Draft Order Guard: cancel orders missing customer details" workflow.
+// Shopify Flow "Run code" step for the "Draft Order Guard: flag orders missing customer details" workflow.
 // Paste this whole file into Write code. Same rule as the app; keep the three copies in sync.
 
 // Orders completed from a draft in the admin. Some stores report a numeric app ID instead:

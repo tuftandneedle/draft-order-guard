@@ -9,7 +9,9 @@
       "cart": {
         "buyerIdentity": {
           "email": "jane@example.com",
-          "phone": "+15555550100"
+          "phone": "+15555550100",
+          "isAuthenticated": false,
+          "customer": null
         },
         "lines": [
           {
@@ -21,7 +23,8 @@
         ],
         "deliveryGroups": [
           {
-            "deliveryAddress": null
+            "deliveryAddress": null,
+            "selectedDeliveryOption": null
           }
         ]
       }

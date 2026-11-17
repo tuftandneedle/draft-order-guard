@@ -4,18 +4,21 @@
     "target": "cart.validations.generate.run",
     "input": {
       "buyerJourney": {
-        "step": "CHECKOUT_COMPLETION"
+        "step": null
       },
       "cart": {
         "buyerIdentity": {
           "email": "jane@example.com",
-          "phone": "+15555550100"
+          "phone": "+15555550100",
+          "isAuthenticated": false,
+          "customer": null
         },
         "lines": [
           {
             "merchandise": {
               "__typename": "CustomProduct",
-              "requiresShipping": false
+              "requiresShipping": false,
+              "title": "Warranty"
             }
           }
         ],

@@ -1,0 +1,56 @@
+{
+  "payload": {
+    "export": "cart-validations-generate-run",
+    "target": "cart.validations.generate.run",
+    "input": {
+      "buyerJourney": {
+        "step": "CHECKOUT_COMPLETION"
+      },
+      "cart": {
+        "buyerIdentity": {
+          "email": null,
+          "phone": null,
+          "isAuthenticated": false,
+          "customer": {
+            "id": "gid://shopify/Customer/1"
+          }
+        },
+        "lines": [
+          {
+            "merchandise": {
+              "__typename": "ProductVariant",
+              "requiresShipping": true
+            }
+          }
+        ],
+        "deliveryGroups": [
+          {
+            "deliveryAddress": {
+              "address1": "1 Main St",
+              "phone": null
+            },
+            "selectedDeliveryOption": null
+          }
+        ]
+      }
+    },
+    "output": {
+      "operations": [
+        {
+          "validationAdd": {
+            "errors": [
+              {
+                "message": "🛑 Missing customer email. Click Cancel, add it, then try again.",
+                "target": "$.cart"
+              },
+              {
+                "message": "🛑 Missing phone number (customer or shipping address). Click Cancel, add it, then try again.",
+                "target": "$.cart"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "payload": {
+    "export": "cart-validations-generate-run",
+    "target": "cart.validations.generate.run",
+    "input": {
+      "buyerJourney": {
+        "step": "CHECKOUT_COMPLETION"
+      },
+      "cart": {
+        "buyerIdentity": {
+          "email": "jane@example.com",
+          "phone": null,
+          "isAuthenticated": false,
+          "customer": null
+        },
+        "lines": [
+          {
+            "merchandise": {
+              "__typename": "ProductVariant",
+              "requiresShipping": true
+            }
+          }
+        ],
+        "deliveryGroups": [
+          {
+            "deliveryAddress": {
+              "address1": "1 Main St",
+              "phone": null
+            },
+            "selectedDeliveryOption": {
+              "deliveryMethodType": "SHIPPING"
+            }
+          }
+        ]
+      }
+    },
+    "output": {
+      "operations": [
+        {
+          "validationAdd": {
+            "errors": [
+              {
+                "message": "🛑 Missing phone number (customer or shipping address). Click Cancel, add it, then try again.",
+                "target": "$.cart"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
